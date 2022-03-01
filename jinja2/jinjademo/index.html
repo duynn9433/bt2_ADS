@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Jinja demo{% endblock %}
+
+{% block body %}
+    <h1>Jinja</h1>
+    <p>adfafddsf</p>
+{#    call parent value#}
+    {% block breadcrumb %}Main{% endblock %}
+{#    macro#}
+    {% import 'base.html' as base %}
+    {{ base.coffeestore('Downtown',1,'Horton Plaza','San Diego','CA','downtown@coffeehouse.com') }}
+{#macro with call#}
+    {# macro definition#}
+    {% macro contentlist(adcolumn_width=3,contentcolumn_width=6) -%}
+        <div class="col-md-{{ adcolumn_width }}">
+            Sidebar ads
+        </div>
+        <div class="col-md-{{ contentcolumn_width }}">
+            {{ caller() }}
+        </div>
+        <div class="col-md-{{ adcolumn_width }}">
+            Sidebar ads
+        </div>
+    {%- endmacro %}
+    {#    # macro call/invocation#}
+    {% call contentlist() %}
+        <ul>
+            <li>This is my list</li>
+        </ul>
+    {% endcall %}
+{% endblock body %}

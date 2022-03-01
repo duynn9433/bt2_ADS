@@ -1,0 +1,36 @@
+{% extends 'base_bt2.html' %}
+{% block content %}
+    <h1>Book</h1>
+
+    <div class="row mt-4">
+        <div class="col">
+            <table class="table table-striped" cellspacing="5" cellpadding="5" border="1">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Publication Date</th>
+                    <th>Authors</th>
+                    <th>Publisher</th>
+                </tr>
+                </thead>
+                </tr>
+                {% for i in books %}
+                    <tr valign="top">
+                        <td><a href={{ links[loop.index0] }}>{{ i.title }}</a></td>
+                        <td>{{ i.price }}</td>
+                        <td>{{ i.publicationDate }}</td>
+                        <td> {{ authors[loop.index0] }} </td>
+                        <td>{{ i.publisher.name + ", " + i.publisher.country }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div>
+        <form action="add/">
+            <input type="submit" value="Thêm sách"/>
+        </form>
+    </div>
+
+{% endblock %}

@@ -9,11 +9,14 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os.path
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import mobile_phones.apps
+
 BASE_DIR = Path(__file__).resolve().parent.parent
+PROJECT_DIR = Path(__file__).resolve().parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -37,6 +40,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.admindocs',
+    'about',
+    'jinjademo',
+    'books.apps.BooksConfig',
+    'pages',
+    'mobile_phones.apps.MobilePhonesConfig',
+    'clothes.apps.ClothesConfig',
+    'electronics.apps.ElectronicsConfig',
+    'shoes.apps.ShoesConfig',
 ]
 
 MIDDLEWARE = [
@@ -53,9 +65,15 @@ ROOT_URLCONF = 'bt2_ADS.urls'
 
 TEMPLATES = [
     {
+        'BACKEND': 'django.template.backends.jinja2.Jinja2',
+        'DIRS': [BASE_DIR / 'jinja2'],
+        'APP_DIRS': True,
+        'OPTIONS':{
+        }
+    },
+    {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR/'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -83,7 +101,9 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '3306',
         'OPTION': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'" #which is used to handle the invalid or missing values from being stored in the database by INSERT and UPDATE statements.
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+            # which is used to handle the invalid or missing values from
+            # being stored in the database by INSERT and UPDATE statements.
         }
     }
 }

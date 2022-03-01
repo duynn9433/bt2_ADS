@@ -1,0 +1,6 @@
+{% extends "jinjademo/index.html" %}
+{% block body %}
+    {% block breadcrumb %} {{super()}} : Detail {% endblock %}
+    {% import 'base.html' as base %}
+    {{base.coffeestore('Downtown',1,'Horton Plaza','San Diego','CA','downtown@coffeehouse.com')}}
+{% endblock body %}
