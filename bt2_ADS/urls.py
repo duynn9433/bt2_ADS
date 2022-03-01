@@ -28,4 +28,5 @@ urlpatterns = [
     path('jinjademo/', include('jinjademo.urls')),
 
     path('book/', include('books.urls')),
+    path('mobile/', include('mobile_phones.urls')),
 ]
