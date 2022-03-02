@@ -1,23 +1,21 @@
 {% extends 'base_bt2.html' %}
 {% block content %}
-    <h1>Mobile</h1>
+    <h1>Electronic</h1>
 
     <div class="row mt-4">
         <div class="col">
             <table class="table table-striped" cellspacing="5" cellpadding="5" border="1">
                 <thead class="thead-dark">
                 <tr>
-                    <th>RAM</th>
-                    <th>ROM</th>
-                    <th>Card Slot</th>
+                    <th>Name</th>
+                    <th>Country</th>
                 </tr>
                 </thead>
                 </tr>
-                {% for i in memories %}
+                {% for i in list %}
                     <tr valign="top">
-                        <td><a href={{ links[loop.index0] }}>{{ i.ram }}</a></td>
-                        <td>{{ i.rom }}</td>
-                        <td>{{ i.cardSlot }}</td>
+                        <td><a href={{ links[loop.index0] }}>{{ i.name }}</a></td>
+                        <td>{{ i.country }}</td>
                     </tr>
                 {% endfor %}
             </table>

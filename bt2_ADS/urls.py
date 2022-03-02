@@ -29,4 +29,7 @@ urlpatterns = [
 
     path('book/', include('books.urls')),
     path('mobile/', include('mobile_phones.urls')),
+    path('cloth/', include('clothes.urls')),
+    path('shoe/', include('shoes.urls')),
+    path('electronic/', include('electronics.urls')),
 ]

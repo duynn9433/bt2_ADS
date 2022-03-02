@@ -1,0 +1,34 @@
+from django import forms
+
+from clothes.models import Cloth, Vendor
+from electronics.models import Electronic, Size
+from shoes.models import Brand
+
+
+class CustomMCF(forms.ModelChoiceField):
+    def label_from_instance(self, obj):
+        return "%s" % obj.name + ", " + obj.country
+
+
+class CustomMCFSize(forms.ModelChoiceField):
+    def label_from_instance(self, obj):
+        return "%s" % obj.width + "x" + obj.height + "x" + obj.deep + ", " + obj.weight
+
+
+class AddElectronic(forms.ModelForm):
+    class Meta:
+        model = Electronic
+        fields = ['name', 'type', 'wattage', 'size', 'brand']
+
+    brand = CustomMCF(
+        queryset=Brand.objects.all()
+    )
+    size = CustomMCFSize(
+        queryset=Size.objects.all()
+    )
+
+
+class AddSize(forms.ModelForm):
+    class Meta:
+        model = Size
+        fields = ['width', 'height', 'deep', 'weight']
