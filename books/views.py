@@ -1,5 +1,3 @@
-from Tools.scripts.which import msg
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -42,7 +40,6 @@ def change(request, id = None):
     if request.method == 'POST':
         form = AddBook(request.POST, instance=book)
         if form.is_valid():
-            msg("valid")
             profile = form.save(commit=False)
             profile.save()
             form.save_m2m()
@@ -59,7 +56,6 @@ def change_author(request, id = None):
     if request.method == 'POST':
         form = AddAuthor(request.POST, instance=author)
         if form.is_valid():
-            msg("valid")
             profile = form.save(commit=False)
             profile.save()
             form.save_m2m()
@@ -76,7 +72,6 @@ def change_publisher(request, id = None):
     if request.method == 'POST':
         form = AddPublisher(request.POST, instance=pub)
         if form.is_valid():
-            msg("valid")
             profile = form.save(commit=False)
             profile.save()
             form.save_m2m()
