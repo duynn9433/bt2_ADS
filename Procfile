@@ -1,1 +1,1 @@
-web: gunicorn bt2_ADS.wsgi --log-file -
+web: gunicorn bt2_ADS.wsgi:application --log-file -
