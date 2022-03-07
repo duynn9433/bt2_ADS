@@ -44,8 +44,7 @@ def change(request, id = None):
             profile.save()
             form.save_m2m()
 
-            # home = request.POST.get('home', '/')
-            # return HttpResponseRedirect(home)  # Redirect after POST
+            return redirect('/book/')
 
     add_book = AddBook(instance=book)
     return render(request, 'books/add.html', {'form': add_book})
@@ -59,6 +58,7 @@ def change_author(request, id = None):
             profile = form.save(commit=False)
             profile.save()
             form.save_m2m()
+            return redirect('/book/author')
 
             # home = request.POST.get('home', '/')
             # return HttpResponseRedirect(home)  # Redirect after POST
@@ -75,6 +75,7 @@ def change_publisher(request, id = None):
             profile = form.save(commit=False)
             profile.save()
             form.save_m2m()
+            return redirect('/book/publisher')
 
             # home = request.POST.get('home', '/')
             # return HttpResponseRedirect(home)  # Redirect after POST
@@ -90,6 +91,7 @@ def add(request):
             form.save()
             # home = request.POST.get('home', '/')
             # return HttpResponseRedirect(home)  # Redirect after POST
+            return redirect('/book')
 
     add_book = AddBook()
     return render(request, 'books/add.html', {'form': add_book})
@@ -100,6 +102,7 @@ def add_author(request):
         form = AddAuthor(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('/book/author')
 
     add_author_form = AddAuthor()
     return render(request, 'books/add.html', {'form': add_author_form})
@@ -110,6 +113,7 @@ def add_publisher(request):
         form = AddPublisher(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('/book/publisher')
 
     add_form = AddPublisher()
     return render(request, 'books/add.html', {'form': add_form})

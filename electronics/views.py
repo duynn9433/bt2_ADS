@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from electronics.forms import AddElectronic, AddSize
 from electronics.models import Electronic, Size
@@ -30,6 +30,7 @@ def change(request, id=None):
             profile = form.save(commit=False)
             profile.save()
             form.save_m2m()
+            return redirect('/electronic')
 
     form = AddElectronic(instance=o)
     return render(request, 'base_form.html', {'form': form})
@@ -43,6 +44,7 @@ def size_change(request, id=None):
             profile = form.save(commit=False)
             profile.save()
             form.save_m2m()
+            return redirect('/electronic/size')
 
     form = AddSize(instance=o)
     return render(request, 'base_form.html', {'form': form})
@@ -53,6 +55,7 @@ def add(request):
         form = AddElectronic(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('/electronic')
 
     form = AddElectronic()
     return render(request, 'base_form.html', {'form': form})
@@ -64,6 +67,7 @@ def add_size(request):
         form = AddSize(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('/electronic/size')
 
     form = AddSize()
     return render(request, 'base_form.html', {'form': form})

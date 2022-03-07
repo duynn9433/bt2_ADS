@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from mobile_phones.forms import AddMobile, AddMemory, AddProducer
@@ -14,6 +14,7 @@ def index(request):
         links.append(str(b.id) + '/change')
 
     return render(request, 'mobile/index.html', {'mobiles': mobiles, 'memories': memories, 'links': links})
+
 
 def memory_index(request):
     memories = Memory.objects.all()
@@ -32,6 +33,7 @@ def producer_index(request):
 
     return render(request, 'mobile/producer_index.html', {'producers': pro, 'links': links})
 
+
 def change(request, id = None):
     o = MobilePhone.objects.get(id=id)
     if request.method == 'POST':
@@ -40,6 +42,7 @@ def change(request, id = None):
             profile = form.save(commit=False)
             profile.save()
             form.save_m2m()
+            return redirect('/mobile')
 
     form = AddMobile(instance=o)
     return render(request, 'base_form.html', {'form': form})
@@ -53,6 +56,7 @@ def change_memory(request, id = None):
             profile = form.save(commit=False)
             profile.save()
             form.save_m2m()
+            return redirect('/mobile/memory')
 
     form = AddMemory(instance=o)
     return render(request, 'base_form.html', {'form': form})
@@ -66,6 +70,7 @@ def change_producer(request, id = None):
             profile = form.save(commit=False)
             profile.save()
             form.save_m2m()
+            return redirect('/mobile/producer')
 
     form = AddProducer(instance=o)
     return render(request, 'base_form.html', {'form': form})
@@ -76,6 +81,7 @@ def add(request):
         form = AddMobile(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('/mobile')
 
     form = AddMobile()
     return render(request, 'base_form.html', {'form': form})
@@ -86,15 +92,18 @@ def add_memory(request):
         form = AddMemory(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('/mobile/memory')
 
     form = AddMemory()
     return render(request, 'base_form.html', {'form': form})
+
 
 def add_producer(request):
     if request.method == 'POST':
         form = AddProducer(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('/mobile/producer')
 
     form = AddProducer()
     return render(request, 'base_form.html', {'form': form})

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from shoes.forms import AddShoe, AddBrand
@@ -31,6 +31,7 @@ def change(request, id=None):
             profile = form.save(commit=False)
             profile.save()
             form.save_m2m()
+            return redirect('/shoe')
 
     form = AddShoe(instance=o)
     return render(request, 'base_form.html', {'form': form})
@@ -44,6 +45,7 @@ def brand_change(request, id=None):
             profile = form.save(commit=False)
             profile.save()
             form.save_m2m()
+            return redirect('/shoe/brand')
 
     form = AddBrand(instance=o)
     return render(request, 'base_form.html', {'form': form})
@@ -54,10 +56,10 @@ def add(request):
         form = AddShoe(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('/shoe')
 
     form = AddShoe()
     return render(request, 'base_form.html', {'form': form})
-
 
 
 def add_brand(request):
@@ -65,6 +67,7 @@ def add_brand(request):
         form = AddBrand(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('/shoe/brand')
 
     form = AddBrand()
     return render(request, 'base_form.html', {'form': form})

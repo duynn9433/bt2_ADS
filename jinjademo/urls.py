@@ -5,5 +5,5 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('', views.index),
     path('detail', views.detail),
-    path('macro',views.macro),
+    path('macro', views.macro),
 ]

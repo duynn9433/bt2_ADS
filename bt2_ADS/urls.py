@@ -32,4 +32,5 @@ urlpatterns = [
     path('cloth/', include('clothes.urls')),
     path('shoe/', include('shoes.urls')),
     path('electronic/', include('electronics.urls')),
+    path('laptop/', include('laptops.urls')),
 ]

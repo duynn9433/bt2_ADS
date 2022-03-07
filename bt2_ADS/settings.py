@@ -13,6 +13,7 @@ import os.path
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import laptops.apps
 import mobile_phones.apps
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
     'clothes.apps.ClothesConfig',
     'electronics.apps.ElectronicsConfig',
     'shoes.apps.ShoesConfig',
+    'laptops.apps.LaptopsConfig',
 ]
 
 MIDDLEWARE = [
