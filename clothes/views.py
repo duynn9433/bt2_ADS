@@ -11,7 +11,7 @@ def index(request):
     for b in list:
         links.append(str(b.id) + '/change')
 
-    return render(request, 'cloth/base.html', {'list': list, 'links': links})
+    return render(request, 'cloth/index.html', {'list': list, 'links': links})
 
 
 def vendor_index(request):

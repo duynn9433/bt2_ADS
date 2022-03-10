@@ -14,6 +14,9 @@ def contact(request):
     return render(request, 'about/contact.html')
 
 
+def trigger_error(request):
+    division_by_zero = 1 / 0
+
 def regiter(request):
     form = RegisteForm()
     if request.method == 'POST':

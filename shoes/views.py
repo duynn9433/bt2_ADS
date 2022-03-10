@@ -11,7 +11,7 @@ def index(request):
     for b in list:
         links.append(str(b.id) + '/change')
 
-    return render(request, 'shoe/base.html', {'list': list, 'links': links})
+    return render(request, 'shoe/index.html', {'list': list, 'links': links})
 
 
 def brand_index(request):
