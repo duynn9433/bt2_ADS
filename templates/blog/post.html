@@ -1,0 +1,7 @@
+{% extends 'about/base.html' %}
+{% block about_content %}
+    <h3> <a href="blog/{{ post.id }}">{{ post.title }}</a> </h3>
+    <h6>{{ post.date }}</h6>
+    {{ post.body|safe|linebreaks }}
+    <img src="{{ post.image.url }}"/>
+{% endblock %}

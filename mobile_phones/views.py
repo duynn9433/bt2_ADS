@@ -13,7 +13,7 @@ def index(request):
         memories.append(b.str_memories())
         links.append(str(b.id) + '/change')
 
-    return render(request, 'mobile/index.html', {'mobiles': mobiles, 'memories': memories, 'links': links})
+    return render(request, 'mobile/base.html', {'mobiles': mobiles, 'memories': memories, 'links': links})
 
 
 def memory_index(request):

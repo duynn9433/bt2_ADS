@@ -14,7 +14,7 @@ def index(request):
         authors.append(b.print_authors())
         links.append(str(b.id) + '/change')
 
-    return render(request, 'books/index.html', {'books': books, 'authors': authors, 'links': links})
+    return render(request, 'books/base.html', {'books': books, 'authors': authors, 'links': links})
 
 
 def author_index(request):

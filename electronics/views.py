@@ -10,7 +10,7 @@ def index(request):
     for b in list:
         links.append(str(b.id) + '/change')
 
-    return render(request, 'electronic/index.html', {'list': list, 'links': links})
+    return render(request, 'electronic/base.html', {'list': list, 'links': links})
 
 
 def size_index(request):

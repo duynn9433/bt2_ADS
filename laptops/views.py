@@ -15,7 +15,7 @@ def index(request):
         cpus.append(b.str_cpu())
         rams.append(b.str_ram())
 
-    return render(request, 'laptop/index.html', {'list': list, 'links': links,'rams':rams,'cpus':cpus})
+    return render(request, 'laptop/base.html', {'list': list, 'links': links,'rams':rams,'cpus':cpus})
 
 
 def ram_index(request):
