@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'shoes.apps.ShoesConfig',
     'laptops.apps.LaptopsConfig',
     'blog.apps.BlogConfig',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
